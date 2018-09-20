@@ -7,6 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Mission to Mars</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ 
+  
 </head>
 
 <body>
@@ -20,42 +22,42 @@
     <!-- Mars Info -->
     <div class="row" id="marsInfo">
       <div class="col-md-12">
-        <h3 class="heading">Latest Mars News</h3>
-		<h4 class="heading">{{marsInfo.news_title}}</h4>
+        <h3 class="heading"><strong>Latest Mars News</strong></h3>
+		<h4 class="heading"><strong>{{marsInfo.news_title}} </strong></h4>
         <small>{{marsInfo.news_p}}</small>
+		<br><br><br>
       </div>
     </div>
 	
 	<div class="container-fluid">
-		<div class="row bg-info">
+		<div class="row ">
 			<div class="col-md-8 bg-light">
-				<h3>Featured Mars Image</h3>
+				<h3><strong>Featured Mars Image</strong></h3>
 				<img alt="Featured Mars Image" style="float:left;padding-right:10px" src={{marsInfo.featured_image_url}} class="img-responsive">
 			</div>
 			<div class="col-md-4 bg-light">
 				<p>
-					<h3>Mars Weather</h3>
+					<h4><strong>Current Weather on Mars</strong></h4>
 					<small>{{marsInfo.mars_weather}}</small>
+					<br><br>
 				</p>
 				<p>
-					<h3>Mars Fact</h3>
-					<h4>{{marsInfo.fact_table|safe}}</h4>
+					<h4><strong>Mars Facts</strong></h4>
+					{{marsInfo.fact_table|safe}}
 				</p>
 			</div>
 		</div>
-		
+		<br><br><br>
 		<div class="row">
-			<h3>Mars Hemisphere</h3>
-			<ul style="list-style: none;">
-			
-				{% for marsHemispher in marsInfo.hemisphere_image_urls %}
-					<li style="color:blue">{{ marsHemispher.title }} </li>
-					<!--li style="color:blue">{{ marsHemispher.img_url }} </li-->
-					<li style="color:blue"><img alt={{ marsHemispher.title }} style="float:left;padding-right:10px" src={{marsHemispher.img_url}} class="img-responsive" >
-				{% endfor %}
-				
-			</ul>
-		</div>
+			<h3 class="text-center">Mars Hemispheres</h3>
+			{% for marsHemispher in marsInfo.hemisphere_image_urls %}
+				<div class="col-lg-6 div-format">
+					<img alt={{ marsHemispher.title }} style="float:left;padding-right:10px" src={{marsHemispher.img_url}} class="img-responsive" >
+					<figcaption class="figure-caption text-left"><strong>{{marsHemispher.title}}</strong></figcaption>
+					<br><br>
+				</div>			
+			{% endfor %}
+		</div>	
 	</div>
 
   </div>
