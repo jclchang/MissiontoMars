@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission to Mars</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>marsInfo
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+    </div>
+
+    <!-- Mars Info -->
+    <div class="row" id="marsInfo">
+      <div class="col-md-12">
+        <h3 class="heading">Latest Mars News</h3>
+		<h4 class="heading">{{marsInfo.news_title}}</h4>
+        <small>{{marsInfo.news_p}}</small>
+      </div>
+    </div>
+	
+	<div class="container-fluid">
+		<div class="row bg-info">
+			<div class="col-md-8 bg-light">
+				<h3>Featured Mars Image</h3>
+				<img alt="Featured Mars Image" style="float:left;padding-right:10px" src={{marsInfo.featured_image_url}} class="img-responsive">
+			</div>
+			<div class="col-md-4 bg-light">
+				<p>
+					<h3>Mars Weather</h3>
+					<small>{{marsInfo.mars_weather}}</small>
+				</p>
+				<p>
+					<h3>Mars Fact</h3>
+					<h4>{{marsInfo.fact_table|safe}}</h4>
+				</p>
+			</div>
+		</div>
+		
+		<div class="row">
+			<h3>Mars Hemisphere</h3>
+			<ul style="list-style: none;">
+			
+				{% for marsHemispher in marsInfo.hemisphere_image_urls %}
+					<li style="color:blue">{{ marsHemispher.title }} </li>
+					<!--li style="color:blue">{{ marsHemispher.img_url }} </li-->
+					<li style="color:blue"><img alt={{ marsHemispher.title }} style="float:left;padding-right:10px" src={{marsHemispher.img_url}} class="img-responsive" >
+				{% endfor %}
+				
+			</ul>
+		</div>
+	</div>
+
+  </div>
+</body>
+
+</html>
